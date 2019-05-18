@@ -1,14 +1,33 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "panels"
 
 ApplicationWindow {
     id: window
     visible: true
-    width: 640
-    height: 480
+    width: propWidth
+    height: propHeight
     title: qsTr("Stack")
+    property int propWidth: 563
+    property int propHeight: 1000
 
-    header: ToolBar {
+    FontLoader
+    {
+        id: robotoLight
+        source: "qrc:/fonts/Roboto-Light.ttf"
+    }
+    FontLoader
+    {
+        id: robotoRegular
+        source: "qrc:/fonts/Roboto-Regular.ttf"
+    }
+    FontLoader
+    {
+        id: engravers
+        source: "qrc:/fonts/Engravers Gothic BT.ttf"
+    }
+
+    /*header: ToolBar {
         contentHeight: toolButton.implicitHeight
 
         ToolButton {
@@ -60,6 +79,18 @@ ApplicationWindow {
     StackView {
         id: stackView
         initialItem: "HomeForm.ui.qml"
+        anchors.fill: parent
+    }*/
+
+    /*SwipeView{
+        anchors.fill: parent
+    }*/
+
+    /*Settings{
+        anchors.fill: parent
+    }*/
+
+    Stats{
         anchors.fill: parent
     }
 }

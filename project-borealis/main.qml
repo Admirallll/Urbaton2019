@@ -1,6 +1,5 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import "panels"
 
 ApplicationWindow {
     id: window
@@ -40,11 +39,6 @@ ApplicationWindow {
     /*header: ToolBar {
         contentHeight: toolButton.implicitHeight*/
 
-    StackView {
-        id: stackView
-        initialItem: "HomeForm.ui.qml"
-        anchors.fill: parent
-    }
     /*SwipeView{
         anchors.fill: parent
     }*/
@@ -52,9 +46,4 @@ ApplicationWindow {
     /*Settings{
         anchors.fill: parent
     }*/
-
-    Stats{
-        anchors.fill: parent
-    }
->>>>>>> 48a61de930e8e09f92ecee6ff924daa7e030cb85
 }

@@ -5,10 +5,29 @@
         <file>Page1Form.ui.qml</file>
         <file>Page2Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
+
         <file>AuthorizationWindow.qml</file>
         <file>RegisterWindow.qml</file>
-    </qresource>
+        <file>InputPair.qml</file>
+        <file>images/icon.png</file>
+        <file>main.cpp</file>
+        <file>images/1.png</file>
+        <file>images/2.png</file>
+        <file>fonts/Engravers Gothic BT.ttf</file>
+        <file>fonts/helvetica.otf</file>
+        <file>fonts/Roboto-Light.ttf</file>
+        <file>fonts/Roboto-Regular.ttf</file>
+        <file>images/grass.jpg</file>
+   </qresource>
     <qresource prefix="/controls">
         <file>InputPair.qml</file>
+    </qresource>
+    <qresource prefix="/panels">
+        <file>SwipeView.qml</file>
+        <file>Menu.qml</file>
+        <file>MapView.qml</file>
+        <file>News.qml</file>
+        <file>Settings.qml</file>
+        <file>Stats.qml</file>
     </qresource>
 </RCC>

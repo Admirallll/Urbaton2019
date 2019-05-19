@@ -11,17 +11,17 @@ Item {
         x:0
         y:0
         id: background
-        source: "qrc:/images/wave.jpg"
+        source: "qrc:/images/turtle.jpg"
         smooth: true
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent
         clip: true
     }
-    FastBlur {
+    /*FastBlur {
         anchors.fill: background
         source: background
         radius: 32
-    }
+    }*/
 
     Text{
         id: textt
@@ -53,6 +53,7 @@ Item {
         height: hC
         placeholderText: "Бумага, кг"
         font.family: robotoLight.name
+        opacity: 0.8
     }
     Text{
         x: 10
@@ -72,6 +73,7 @@ Item {
         height: hC
         placeholderText: "Пластик, кг"
         font.family: robotoLight.name
+        opacity: 0.8
     }
     Text{
         x: 10
@@ -91,6 +93,7 @@ Item {
         height: hC
         placeholderText: "Стекло, кг"
         font.family: robotoLight.name
+        opacity: 0.8
     }
     Text{
         x: 10
@@ -110,6 +113,7 @@ Item {
         height: hC
         placeholderText: "Батарейка, шт"
         font.family: robotoLight.name
+        opacity: 0.8
     }
     Text{
         x: 10
@@ -129,6 +133,7 @@ Item {
         height: hC
         placeholderText: "Одежда, кг"
         font.family: robotoLight.name
+        opacity: 0.8
     }
     Text{
         x: 10
@@ -148,6 +153,7 @@ Item {
         height: hC
         placeholderText: "Другое, кг"
         font.family: robotoLight.name
+        opacity: 0.8
     }
 
     Button{

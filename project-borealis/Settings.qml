@@ -10,17 +10,17 @@ Item{
         x:0
         y:0
         id: background
-        source: "qrc:/images/wave.jpg"
+        source: "qrc:/images/turtle.jpg"
         smooth: true
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent
         clip: true
     }
-    FastBlur {
+    /*FastBlur {
             anchors.fill: background
             source: background
             radius: 32
-        }
+        }*/
 
     Text{
         x:parent.width/2 - width/2
@@ -64,7 +64,7 @@ Item{
             text: warnings.text
             font: warnings.font
             opacity: enabled ? 1.0 : 0.3
-            color: warnings.down ? "#17a81a" : "#ffffff"
+            color: warnings.down ? "#cccccc" : "#ffffff"
             verticalAlignment: Text.AlignVCenter
             leftPadding: warnings.indicator.width + warnings.spacing
         }
@@ -164,7 +164,7 @@ Item{
             text: geolocation.text
             font: geolocation.font
             opacity: enabled ? 1.0 : 0.3
-            color: geolocation.down ? "#17a81a" : "#ffffff"
+            color: geolocation.down ? "#cccccc" : "#ffffff"
             verticalAlignment: Text.AlignVCenter
             leftPadding: geolocation.indicator.width + geolocation.spacing
         }
@@ -203,7 +203,7 @@ Item{
             text: camera.text
             font: camera.font
             opacity: enabled ? 1.0 : 0.3
-            color: camera.down ? "#17a81a" : "#ffffff"
+            color: camera.down ? "#cccccc" : "#ffffff"
             verticalAlignment: Text.AlignVCenter
             leftPadding: camera.indicator.width + camera.spacing
         }

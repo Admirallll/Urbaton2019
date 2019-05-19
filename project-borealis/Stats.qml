@@ -11,18 +11,18 @@ Item{
     Image {
         //anchors.fill: parent
         id: background
-        source: "qrc:/images/wave.jpg"
+        source: "qrc:/images/turtle.jpg"
         smooth: true
 
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent
         clip: true
     }
-    FastBlur {
+    /*FastBlur {
             anchors.fill: background
             source: background
             radius: 32
-        }
+        }*/
 
     Text{
         x:parent.width/2 - width/2

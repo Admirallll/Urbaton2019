@@ -22,6 +22,7 @@
         <file>images/comix/6.png</file>
         <file>images/comix/all.png</file>
         <file>images/wave.jpg</file>
+        <file>images/turtle.jpg</file>
     </qresource>
     <qresource prefix="/controls">
         <file>InputPair.qml</file>

@@ -1,4 +1,7 @@
-QT += quick network core
+TARGET = places_map
+TEMPLATE = app
+
+QT += quick network core positioning location
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -15,7 +18,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     httpwrapper.cpp \
-    core.cpp
+    core.cpp \
+    dataobject.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,4 +36,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     httpwrapper.h \
-    core.h
+    core.h \
+    dataobject.h

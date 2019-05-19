@@ -1,17 +1,20 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtGraphicalEffects 1.12
+import QtQuick 2.11
+import QtQuick.Controls 2.4
+import QtGraphicalEffects 1.0
 
 
 Item{
-    anchors.fill: parent
+   // anchors.fill: parent
     Image {
-        //anchors.fill: parent
+
         x:0
         y:0
         id: background
         source: "qrc:/images/grass.jpg"
         smooth: true
+        fillMode: Image.PreserveAspectCrop
+        anchors.fill: parent
+        clip: true
     }
     FastBlur {
             anchors.fill: background

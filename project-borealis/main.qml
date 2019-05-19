@@ -1,14 +1,23 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "panels"
+import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
+
     id: window
     visible: true
     width: propWidth
     height: propHeight
     title: qsTr("Stack")
-    property int propWidth: 563
-    property int propHeight: 1000
+    property int propWidth: 480
+    property int propHeight: 640
+
+    Connections{
+        target: core
+        onSgEnterToMain: { mainStack.push( "panels/Swiper.qml" ) }
+    }
 
     StackView {
         id: mainStack
@@ -20,6 +29,7 @@ ApplicationWindow {
             anchors.fill: parent
         }
     }
+
     FontLoader
     {
         id: robotoLight
@@ -35,15 +45,4 @@ ApplicationWindow {
         id: engravers
         source: "qrc:/fonts/Engravers Gothic BT.ttf"
     }
-
-    /*header: ToolBar {
-        contentHeight: toolButton.implicitHeight*/
-
-    /*SwipeView{
-        anchors.fill: parent
-    }*/
-
-    /*Settings{
-        anchors.fill: parent
-    }*/
 }

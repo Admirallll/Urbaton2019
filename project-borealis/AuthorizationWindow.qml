@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.11
 import "controls"
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
@@ -53,6 +53,7 @@ Item {
 
                 onClicked: { core.on_network_BtnClicked( "/api/login/", "{ \"login\": \"" + loginPair.formData + "\", \"password\": \"" + passwordPair.formData + "\"}") }
             }
+
             MouseArea
             {
                 id: text_area

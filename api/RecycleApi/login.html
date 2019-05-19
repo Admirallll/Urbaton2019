@@ -9,6 +9,8 @@
             width: 200px;
             padding: 20px;
             border-radius: 15px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .textField {
@@ -49,23 +51,44 @@
             font-size: 20px;
         }
 
+        .container {
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        html {
+            height: 100%;
+        }
+
         body {
+            height: 100%;
             font-family: sans-serif;
+            max-width: 800px;
+            margin: auto;
         }
 
         .remind-password-text {
             font-size: 10px;
         }
+
+        .turtle-image {
+            vertical-align: middle;
+            width: 50%;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-<div class="fieldsPanel">
-    <div class="fieldsPanel2">
-        <span class="auth-title">Авторизация</span>
-        <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br/>
-        <input class="textField" type="password" id="password" placeholder="Пароль"><br/>
-        <button class="button-mid" type="button" id="submit">Войти</button> <a href="#" class="remind-password-text">Забыли пароль?</a><br/>
-        <div class="center-container"><a class="reg-link" href="/register">Здесь впервые? Регистрация</a>
+<div class="container">
+    <img class="turtle-image" src="/images/hello.png"/>
+    <div class="fieldsPanel">
+        <div class="fieldsPanel2">
+            <span class="auth-title">Авторизация</span>
+            <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br/>
+            <input class="textField" type="password" id="password" placeholder="Пароль"><br/>
+            <button class="button-mid" type="button" id="submit">Войти</button> <a href="#" class="remind-password-text">Забыли пароль?</a><br/>
+            <div class="center-container"><a class="reg-link" href="/register">Здесь впервые? Регистрация</a>
+            </div>
         </div>
     </div>
 </div>

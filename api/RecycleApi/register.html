@@ -9,6 +9,8 @@
             width: 200px;
             padding: 20px;
             border-radius: 15px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .textField {
@@ -48,27 +50,42 @@
         .auth-title {
             font-size: 20px;
         }
+        .container {
+            padding-top: 100px;
+            text-align: center;
+        }
 
         body {
+            max-width: 800px;
+            margin: auto;
             font-family: sans-serif;
         }
 
         .remind-password-text {
             font-size: 10px;
         }
+
+        .turtle-image {
+            vertical-align: middle;
+            width: 50%;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-    <div class="fieldsPanel">
-        <div class="fieldsPanel2">
-            <span class="auth-title">Регистрация</span>
-            <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br />
-            <input class="textField" type="password" id="password" placeholder="Пароль"><br />
-            <button class="button-mid" type="button" id="submit">Зарегистрироваться</button> 
-            <div class="center-container">
-                <a class="reg-link" href="/login">Уже зарегистрированы? Войти</a>
-            </div>
+<div class="container">
+    <img class="turtle-image" src="/images/hello.png"/>
+<div class="fieldsPanel">
+    <div class="fieldsPanel2">
+        <span class="auth-title">Регистрация</span>
+        <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br />
+        <input class="textField" type="password" id="password" placeholder="Пароль"><br />
+        <button class="button-mid" type="button" id="submit">Зарегистрироваться</button> 
+        <div class="center-container">
+            <a class="reg-link" href="/login">Уже зарегистрированы? Войти</a>
         </div>
+    </div>
+</div>
     </div>
 </body>
 <script>

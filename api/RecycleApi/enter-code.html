@@ -4,11 +4,14 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <style>
-        body {
-            max-width: 1000px;
-            margin: auto;
-            height: 100%;
-        }
+         .turtle-image {
+             width: 80%;
+         }
+         body {
+             max-width: 1000px;
+             margin: auto;
+             height: 100%;
+         }
 
         html {
             font-family: sans-serif;
@@ -128,9 +131,10 @@
 	</div>
     <div class="main-content">
         <div align="center">
+            <img class="turtle-image" src="/images/smile.png"/>
             <h2>Здесь вы можете ввести код, полученный после сдачи мусора в пункте приёма:</h2>
-            <input type="text" id="code" placeholder="Введите код (6 цифр)" />
-            <button type="button" id="submit">Отправить</button><br />
+            <input type="text" id="code" placeholder="Введите код (6 цифр)"/>
+            <button type="button" id="submit">Отправить</button><br/>
             <h3 class="error-text" id="error"></h3>
             <h3 class="success-text" id="success"></h3>
         </div>
@@ -198,7 +202,9 @@
         } else {
             document.getElementById("success")
                 .appendChild(
-                    document.createTextNode("Успех! Вам зачислено " + r.responseText + " баллов."));
+                document.createTextNode("Успех! Вам зачислено " + r.responseText + " баллов."));
+            var turtleImage = document.getElementsByClassName("turtle-image")[0];
+            turtleImage.src = "/images/thanks.png";
         }
         console.info(r.status);
         console.info(r);

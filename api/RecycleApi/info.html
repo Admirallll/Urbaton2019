@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Информация</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            max-width: 1000px;
+            margin: auto;
+            height: 100%;
+        }
+
+        html {
+            font-family: sans-serif;
+            height: 100%;
+        }
+
+        header {
+            width: 100%;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: row;
+            padding: 15px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            height: 90%;
+        }
+
+        .logo {
+            text-align: left;
+        }
+
+        .page-name {
+            text-align: center;
+            font-size: 30px;
+            padding-top: 5px;
+        }
+
+        .exit-button {
+            text-align: right;
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        .header-element {
+            flex: 1 1 0px;
+        }
+
+        .sidebar {
+            width: 20%;
+        }
+
+        .main-content {
+            width: 60%;
+            border-left: 1px solid lightblue;
+            border-right: 1px solid lightblue;
+        }
+
+        .menu {
+        }
+
+        .menu-element {
+            font-size: 20px;
+            padding: 3px;
+            padding-left: 12px;
+            text-align: left;
+        }
+
+        .active-element {
+            background-color: lightblue;
+        }
+
+        .menu-element:hover {
+            background-color: lightblue;
+        }
+
+        a {
+            color: black;
+        }
+
+        .logo-image {
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .logo-name {
+            padding-left: 10px;
+            font-size: 20px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .container2 {
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        main {
+        }
+    </style>
+</head>
+<body>
+<header>
+	<div class="header-element logo"><div class="container2"><img class="logo-image"src="./images/logo.png"><span class="logo-name">Recycle Hero</span></div></div>
+	<div class="header-element page-name">Информация</div>
+	<div class="header-element exit-button">Выйти</div>
+</header>
+<main>
+	<div class="sidebar menu">
+		<div class="menu-element active-element"><a href="/info">Информация</a></div>
+		<div class="menu-element"><a href="/map">Карта</a></div>
+		<div class="menu-element"><a href="/statistics">Статистика</a></div>
+		<div class="menu-element"><a href="/code">Ввести код</a></div>
+		<div class="menu-element"><a href="/rating">Рейтинг</a></div>
+		<div class="menu-element"><a href="/settings">Настройки</a></div>
+	</div>
+	<div class="main-content"></div>
+	<div class="sidebar left-sidebar"></div>
+</main>
+<script>
+    function getCookies() {
+	    var cookies = document.cookie.split(';');
+	    var result = {}
+	    for (var i = 0; i < cookies.length; i++) {
+		    var splitedCookie = cookies[i].trim().split('=');
+		    if (splitedCookie[0].length === 0)
+			    continue;
+		    result[splitedCookie[0]] = splitedCookie.slice(1).join("=");
+	    }
+	
+	    return result;
+    }
+
+    function ExecuteMethod(url, method, body)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open(method, url, false ); // false for synchronous request
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+        xmlHttp.send(body);
+        return xmlHttp;
+    }
+
+    function setCookies(obj) {
+        var res1 = [];
+        for (var e in Object.entries(obj)) {
+            if (!(e in obj))
+                continue;
+            res1.push(e + "=" + obj[e]);
+        }
+        document.cookie = "userId= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+        console.info(res1.join(';'));
+    }
+
+    function getUser(id) {
+        var r = ExecuteMethod('http://10.34.32.94:51589/api/user/' + id, 'get');
+        return JSON.parse(r.responseText);
+    }
+
+    function onExitClick() {
+        var cookies = getCookies();
+        delete cookies.userId;
+        setCookies(cookies);
+        console.info(getCookies());
+    }
+
+
+    var cookies = getCookies();
+    if (!("userId" in cookies)) {
+        window.location.replace("/login");
+    }
+    var user = getUser(cookies["userId"]);
+    console.log(user);
+    if (user.isKeeper) {
+        window.location.replace("/owner/statistics");
+    }
+
+    var exitButton = document.getElementsByClassName("exit-button")[0];
+    exitButton.addEventListener("click", onExitClick);
+    console.log(cookies);
+</script>
+</body>
+</html>

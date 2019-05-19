@@ -33,9 +33,9 @@ public:
 signals:
     void makeRequest();
 
-    void SgEnterToMain();
-    void SgSetPointList();
-    void SgSetStaticList();
+    void sgEnterToMain();
+    void sgSetPointList();
+    void sgSetStaticList();
 
 public slots:
     void replyReceived(QString reply );

@@ -8,8 +8,9 @@ namespace RecycleApi
 	public class User
 	{
 		public int Id { get; set; }
-		public string Mail { get; set; }
+		public string Login { get; set; }
 		public string Password { get; set; }
 		public bool IsKeeper { get; set; }
+		public int OwnerPointId { get; set; }
 	}
 }

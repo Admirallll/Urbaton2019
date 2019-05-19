@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,16 +27,19 @@ namespace RecycleApi.Controllers
 		[HttpGet]
 		public ActionResult<UserStatistics> GetStat(int id)
 		{
-			var userRecycles = db.Recycles.Where(recycle => recycle.UserId == id);
+			var userRecycles = db.RecycleDtos2.Where(recycle => recycle.UserId == id).ToArray();
 			var result = new UserStatistics();
 			result.MaterialsCount = new Dictionary<MaterialType, int>();
 			result.TotalCount = userRecycles.Count();
-			foreach (var recycle in userRecycles)
+			foreach (var en in Enum.GetValues(typeof(MaterialType)))
+			{
+				var el = (MaterialType) en;
+				result.MaterialsCount[el] = 0;
+			}
+			foreach (var recycle in userRecycles.Select(r => r.ToRecycle()))
 			{
 				foreach (var material in recycle.Materials.Keys)
 				{
-					if (!result.MaterialsCount.ContainsKey(material))
-						result.MaterialsCount[material] = 0;
 					result.MaterialsCount[material] = recycle.Materials[material];
 				}
 			}

@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <style>
+         .turtle-image {
+             width: 80%;
+         }
+         body {
+             max-width: 1000px;
+             margin: auto;
+             height: 100%;
+         }
+
+        html {
+            font-family: sans-serif;
+            height: 100%;
+        }
+
+        header {
+            width: 100%;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: row;
+            padding: 15px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            height: 90%;
+        }
+
+        .logo {
+            text-align: left;
+        }
+
+        .page-name {
+            text-align: center;
+            font-size: 30px;
+            padding-top: 5px;
+        }
+
+        .exit-button {
+            text-align: right;
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        .header-element {
+            flex: 1 1 0px;
+        }
+
+        .sidebar {
+            width: 20%;
+        }
+
+        .main-content {
+            width: 60%;
+            border-left: 1px solid lightblue;
+            border-right: 1px solid lightblue;
+        }
+
+        .menu {
+        }
+
+        .menu-element {
+            font-size: 20px;
+            padding: 3px;
+            padding-left: 12px;
+            text-align: left;
+        }
+
+        .active-element {
+            background-color: lightblue;
+        }
+
+        .menu-element:hover {
+            background-color: lightblue;
+        }
+
+        a {
+            color: black;
+        }
+
+        .logo-image {
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .logo-name {
+            padding-left: 10px;
+            font-size: 20px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .container2 {
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .error-text {
+            color: red;
+        }
+
+        .success-text {
+            color: green;
+        }
+
+        main {
+        }
+    </style>
+</head>
+<body>
+<header>
+	<div class="header-element logo"><div class="container2"><img class="logo-image"src="./images/logo.png"><span class="logo-name">Recycle Hero</span></div></div>
+	<div class="header-element page-name">Page name</div>
+	<div class="header-element exit-button">Выйти</div>
+</header>
+<main>
+	<div class="sidebar menu">
+		<div class="menu-element"><a href="/info">Информация</a></div>
+		<div class="menu-element active-element"><a href="/map">Карта</a></div>
+		<div class="menu-element"><a href="/statistics">Статистика</a></div>
+		<div class="menu-element"><a href="/code">Ввести код</a></div>
+		<div class="menu-element"><a href="/rating">Рейтинг</a></div>
+		<div class="menu-element"><a href="/settings">Настройки</a></div>
+	</div>
+    <div class="main-content">
+        <div align="center">
+            <img class="turtle-image" src="/images/smile.png"/>
+            <h2>Здесь вы можете ввести код, полученный после сдачи мусора в пункте приёма:</h2>
+            <input type="text" id="code" placeholder="Введите код (6 цифр)"/>
+            <button type="button" id="submit">Отправить</button><br/>
+            <h3 class="error-text" id="error"></h3>
+            <h3 class="success-text" id="success"></h3>
+        </div>
+    </div>
+	<div class="sidebar left-sidebar"></div>
+</main>
+<script>
+
+    function ExecuteMethod(url, method, body) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open(method, url, false); // false for synchronous request
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+        xmlHttp.send(body);
+        return xmlHttp;
+    }
+    function getCookies() {
+        var cookies = document.cookie.split(';');
+        var result = {}
+        for (var i = 0; i < cookies.length; i++) {
+            var splitedCookie = cookies[i].trim().split('=');
+            if (splitedCookie[0].length === 0)
+                continue;
+            result[splitedCookie[0]] = splitedCookie.slice(1).join("=");
+        }
+
+        return result;
+    }
+
+    function setCookies(obj) {
+        var res1 = [];
+        for (var e in Object.entries(obj)) {
+            if (!(e in obj))
+                continue;
+            res1.push(e + "=" + obj[e]);
+        }
+        document.cookie = "userId= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+        console.info(res1.join(';'));
+    }
+
+    function onExitClick() {
+        var cookies = getCookies();
+        delete cookies.userId;
+        setCookies(cookies);
+        console.info(getCookies());
+    }
+    function onSubmitClick() {
+        var code = document.getElementById("code").value;
+        if (code.length !== 6) {
+            return;
+        }
+        var sendCodeDto = { "UserId": id, "Code": code };
+        var json = JSON.stringify(sendCodeDto);
+        var r = ExecuteMethod('http://10.34.32.94:51589/api/codes/send-code', 'post', json);
+    
+        var successElem = document.getElementById("success");
+        if (successElem.hasChildNodes())
+            successElem.firstChild.remove();
+        var errorElem = document.getElementById("error");
+        if (errorElem.hasChildNodes())
+            errorElem.firstChild.remove();
+        if (r.status === 404) {
+            document.getElementById("error")
+                .appendChild(
+                    document.createTextNode("Код неверный. Проверьте правильность ввода, код состоит из 6 цифр."));
+        } else {
+            document.getElementById("success")
+                .appendChild(
+                document.createTextNode("Успех! Вам зачислено " + r.responseText + " баллов."));
+            var turtleImage = document.getElementsByClassName("turtle-image")[0];
+            turtleImage.src = "/images/thanks.png";
+        }
+        console.info(r.status);
+        console.info(r);
+    }
+
+
+    var cookies = getCookies();
+    if (!("userId" in cookies)) {
+        window.location.replace("/login");
+    }
+    var id = cookies["userId"];
+
+    var exitButton = document.getElementsByClassName("exit-button")[0];
+    exitButton.addEventListener("click", onExitClick);
+    var submitButton = document.getElementById("submit");
+    submitButton.addEventListener("click", onSubmitClick);
+    console.log(cookies);
+</script>
+</body>
+</html>

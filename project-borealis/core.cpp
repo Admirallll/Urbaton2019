@@ -19,11 +19,13 @@ void Core::parseFromJSON( QString json )
 void Core::emitNeededSignal(QString responce)
 {
     if( responce == "/api/recycle-point/" )
-        emit SgSetPointList();
+        emit sgSetPointList();
     else
         if( responce == "/api/login/" || responce == "/api/register/" )
-            emit SgEnterToMain();
-
+            emit sgEnterToMain();
+        else
+            if( responce == "/api/stats/" )
+                emit sgSetStaticList();
 
 }
 

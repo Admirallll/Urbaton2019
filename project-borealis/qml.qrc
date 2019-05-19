@@ -24,8 +24,7 @@
         <file>InputPair.qml</file>
     </qresource>
     <qresource prefix="/panels">
-        <file>SwipeView.qml</file>
-        <file>Menu.qml</file>
+        <file>Swiper.qml</file>
         <file>MapView.qml</file>
         <file>News.qml</file>
         <file>Settings.qml</file>

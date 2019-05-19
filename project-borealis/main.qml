@@ -3,13 +3,19 @@ import QtQuick.Controls 2.2
 import "qrc:/panels"
 
 ApplicationWindow {
+
     id: window
     visible: true
     width: propWidth
     height: propHeight
     title: qsTr("Stack")
-    property int propWidth: 563
-    property int propHeight: 1000
+    property int propWidth: 480
+    property int propHeight: 640
+
+    Connections{
+        target: core
+        onSgEnterToMain: { mainStack.push( "panels/Swiper.qml" ) }
+    }
 
     StackView {
         id: mainStack
@@ -24,6 +30,7 @@ ApplicationWindow {
             anchors.fill:parent
         }
     }
+
     FontLoader
     {
         id: robotoLight
@@ -39,9 +46,4 @@ ApplicationWindow {
         id: engravers
         source: "qrc:/fonts/Engravers Gothic BT.ttf"
     }
-
-    /*SwipeView{
-        anchors.fill: parent
-    }*/
-
 }

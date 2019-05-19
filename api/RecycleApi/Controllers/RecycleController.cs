@@ -13,19 +13,23 @@ namespace RecycleApi.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<Recycle>> GetAll()
 		{
-			return db.Recycles;
+			var e = db.RecycleDtos2.ToArray();
+			return e.Select(r =>r.ToRecycle()).ToArray();
 		}
 
 		[HttpGet("{id}")]
 		public ActionResult<Recycle> Get(int id)
 		{
-			return db.Recycles.FirstOrDefault(e => e.RecycleId == id);
+			var recycleDto = db.RecycleDtos2.FirstOrDefault(e => e.Id == id);
+			if (recycleDto == null)
+				return NotFound("Not found recycle by id");
+			return recycleDto.ToRecycle();
 		}
 
 		[HttpPost]
-		public void Post([FromBody] Recycle recycle)
+		public void Post([FromBody] RecycleDto recycleDto)
 		{
-			db.Recycles.Add(recycle);
+			db.RecycleDtos2.Add(recycleDto);
 			db.SaveChanges();
 		}
 	}

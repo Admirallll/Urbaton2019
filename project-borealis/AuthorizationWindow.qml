@@ -1,12 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
 import "controls"
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.2
-import QtGraphicalEffects 1.12
-
-
+import QtGraphicalEffects 1.0
 
 Item {
     //anchors.fill: parent
@@ -36,7 +32,6 @@ Item {
         font.pointSize: 30
         color:"white"
     }
-
     Text{
         text: "Введите логин"
         x:parent.width/2-login.width/2
@@ -44,7 +39,6 @@ Item {
         font.family: robotoLight.name
         color:"white"
     }
-
     TextField {//логин
         width: parent.width/2
         height: parent.height*0.03

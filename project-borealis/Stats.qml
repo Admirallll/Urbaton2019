@@ -3,13 +3,20 @@ import QtQuick.Controls 2.4
 import QtGraphicalEffects 1.0
 
 Item{
+    Connections{
+        target: core
+        onSgSetStaticList: { }
+    }
+
     Image {
         //anchors.fill: parent
-        x:0
-        y:0
         id: background
         source: "qrc:/images/grass.jpg"
         smooth: true
+
+        fillMode: Image.PreserveAspectCrop
+        anchors.fill: parent
+        clip: true
     }
     FastBlur {
             anchors.fill: background
@@ -42,6 +49,49 @@ Item{
         height:parent.height*0.5
         color:"black"
         opacity:0.26
+
+        ListView {
+            width: parent.width/2
+            height: parent.height
+            anchors.left: parent.left
+
+            model: myModel
+            delegate: Rectangle {
+                height: 25
+                width: parent.width
+                color: "transparent"
+
+                Text {
+                    text: name
+                    color: "white"
+                    font.pointSize: 14
+                    opacity: 1
+                }
+
+            }
+
+        }
+        ListView {
+            width: parent.width/2
+            height: parent.height
+            anchors.left: parent.horizontalCenter
+
+            model: modelMy
+            delegate: Rectangle {
+                height: 25
+                width: parent.width
+                color: "transparent"
+                Text {
+                    text: name
+                    anchors.right: parent.right
+                    color: "white"
+                    font.pointSize: 14
+                    opacity: 1
+
+                }
+
+            }
+        }
     }
 
     Rectangle{
@@ -51,6 +101,8 @@ Item{
         height:parent.height/2.3
         color:"white"
         opacity:0.3
+
+
     }
 }
 

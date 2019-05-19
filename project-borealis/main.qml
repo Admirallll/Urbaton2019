@@ -9,8 +9,8 @@ ApplicationWindow {
     width: propWidth
     height: propHeight
     title: qsTr("Stack")
-    property int propWidth: 480
-    property int propHeight: 640
+    property int propWidth: 563
+    property int propHeight: 1000
 
     Connections{
         target: core

@@ -40,8 +40,10 @@ Item {
         y: hC*3
         width: parent.width/3
         height: hC
-        font.pointSize: 15
+        font.pointSize: 20
         text: "Бумага"
+        color: "white"
+        font.family: robotoLight.name
     }
     TextField{
         id: paper
@@ -50,14 +52,17 @@ Item {
         width: parent.width/3
         height: hC
         placeholderText: "Бумага, кг"
+        font.family: robotoLight.name
     }
     Text{
         x: 10
         y: hC*4
         width: parent.width/3
         height: hC
-        font.pointSize: 15
+        font.pointSize: 20
         text: "Пластик"
+        color: "white"
+        font.family: robotoLight.name
     }
     TextField{
         id: plastic
@@ -66,14 +71,17 @@ Item {
         width: parent.width/3
         height: hC
         placeholderText: "Пластик, кг"
+        font.family: robotoLight.name
     }
     Text{
         x: 10
         y: hC*5
         width: parent.width/3
         height: hC
-        font.pointSize: 15
+        font.pointSize: 20
         text: "Стекло"
+        color: "white"
+        font.family: robotoLight.name
     }
     TextField{
         id: glass
@@ -82,14 +90,17 @@ Item {
         width: parent.width/3
         height: hC
         placeholderText: "Стекло, кг"
+        font.family: robotoLight.name
     }
     Text{
         x: 10
         y: hC*6
         width: parent.width/3
         height: hC
-        font.pointSize: 15
+        font.pointSize: 20
         text: "Батарейка"
+        color: "white"
+        font.family: robotoLight.name
     }
     TextField{
         id: battary
@@ -98,14 +109,17 @@ Item {
         width: parent.width/3
         height: hC
         placeholderText: "Батарейка, шт"
+        font.family: robotoLight.name
     }
     Text{
         x: 10
         y: hC*7
         width: parent.width/3
         height: hC
-        font.pointSize: 15
+        font.pointSize: 20
         text: "Одежда"
+        color: "white"
+        font.family: robotoLight.name
     }
     TextField{
         id: cloth
@@ -114,14 +128,17 @@ Item {
         width: parent.width/3
         height: hC
         placeholderText: "Одежда, кг"
+        font.family: robotoLight.name
     }
     Text{
         x: 10
         y: hC*8
         width: parent.width/3
         height: hC
-        font.pointSize: 15
+        font.pointSize: 20
         text: "Другое"
+        color: "white"
+        font.family: robotoLight.name
     }
     TextField{
         id: another
@@ -130,6 +147,7 @@ Item {
         width: parent.width/3
         height: hC
         placeholderText: "Другое, кг"
+        font.family: robotoLight.name
     }
 
     Button{
@@ -141,6 +159,7 @@ Item {
         height: hC
 
         text: "Получить код"
+        font.family: robotoLight.name
 
         onClicked: { core.on_network_BtnClicked( "/api/codes/generate/", "{ \"RecyclePointId\": }" /*JSON Object*/ ) }
     }

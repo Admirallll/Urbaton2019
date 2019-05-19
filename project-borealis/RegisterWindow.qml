@@ -3,7 +3,7 @@ import "controls"
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.2
-import QtGraphicalEffects 1.12
+import QtGraphicalEffects 1.0
 
 Item {
     Image {
@@ -69,10 +69,10 @@ Item {
         y:parent.height/1.83
         id: password
         placeholderText: "Пароль"
-        Rectangle {
-            color: control.enabled ? "transparent" : "#353637"
-            border.color: control.enabled ? "#21be2b" : "transparent"
-        }
+//        Rectangle {
+//            color: control.enabled ? "transparent" : "#353637"
+//            border.color: control.enabled ? "#21be2b" : "transparent"
+//        }
     }
 
     Text{
@@ -90,10 +90,10 @@ Item {
         y:parent.height/1.65
         id: passwordRepeat
         placeholderText: "Пароль"
-        Rectangle {
-            color: control.enabled ? "transparent" : "#353637"
-            border.color: control.enabled ? "#21be2b" : "transparent"
-        }
+//        Rectangle {
+//            color: control.enabled ? "transparent" : "#353637"
+//            border.color: control.enabled ? "#21be2b" : "transparent"
+//        }
     }
     Button{
         id: btn
@@ -101,8 +101,8 @@ Item {
         height: parent.height*0.05
         x:parent.width/2-width/2
         y:parent.height/1.5
-        text: "Войти"
-        onClicked: { core.on_network_BtnClicked( "/api/login/", "{ \"login\": \"" + loginPair.formData + "\", \"password\": \"" + passwordPair.formData + "\"}") }
+        text: "Зарегестрироваться"
+        onClicked: { core.on_network_BtnClicked( "/api/register/", "{ \"login\": \"" + login.text + "\", \"password\": \"" + password.text + "\"}") }
     }
             MouseArea
             {
@@ -112,7 +112,6 @@ Item {
                 y:parent.height/1.38
                 id: text_area
                 Text{
-
                     anchors.fill: parent
 
                     text: "Уже зарегистрированы?"

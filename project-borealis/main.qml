@@ -22,13 +22,11 @@ ApplicationWindow {
         //initialItem: "AuthorizationWindow.qml"
         anchors.fill: parent
 
-        /*AuthorizationWindow{
+        AuthorizationWindow{
             id: autWindow
             anchors.fill: parent
-        }*/
-        RegisterWindow{
-            anchors.fill:parent
         }
+
     }
 
     FontLoader

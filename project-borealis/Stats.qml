@@ -26,7 +26,7 @@ Item{
 
     Text{
         x:parent.width/2 - width/2
-        y:parent.height/23
+        y:parent.height/20
         text: "Статистика"
         font.family: robotoLight.name
         font.pointSize: 30

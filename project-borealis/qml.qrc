@@ -12,6 +12,8 @@
         <file>images/grass.jpg</file>
         <file>images/whales.jpg</file>
         <file>images/whaleshd.jpg</file>
+        <file>images/mapa.png</file>
+        <file>images/legenda.png</file>
     </qresource>
     <qresource prefix="/controls">
         <file>InputPair.qml</file>
@@ -22,5 +24,7 @@
         <file>News.qml</file>
         <file>Settings.qml</file>
         <file>Stats.qml</file>
+        <file>CodeScan.qml</file>
+        <file>CodeScanTrasher.qml</file>
     </qresource>
 </RCC>

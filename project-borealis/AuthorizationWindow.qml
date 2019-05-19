@@ -1,4 +1,5 @@
 import "controls"
+import QtQuick 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
 import QtQuick.Window 2.2
@@ -46,10 +47,10 @@ Item {
         y:parent.height/2-height/2
         id: login
         placeholderText: "Логин"
-        Rectangle {
-            color: control.enabled ? "transparent" : "#353637"
-            border.color: control.enabled ? "#21be2b" : "transparent"
-        }
+//        Rectangle {
+//            color: control.enabled ? "transparent" : "#353637"
+//            border.color: control.enabled ? "#21be2b" : "transparent"
+//        }
     }
 
     Text{
@@ -67,10 +68,10 @@ Item {
         y:parent.height/1.83
         id: password
         placeholderText: "Пароль"
-        Rectangle {
-            color: control.enabled ? "transparent" : "#353637"
-            border.color: control.enabled ? "#21be2b" : "transparent"
-        }
+//        Rectangle {
+//            color: control.enabled ? "transparent" : "#353637"
+//            border.color: control.enabled ? "#21be2b" : "transparent"
+//        }
     }
 
     Button{
@@ -82,7 +83,7 @@ Item {
         //font.family: robotoLight.name
         text: "Войти"
 
-        onClicked: { core.on_network_BtnClicked( "/api/login/", "{ \"login\": \"" + loginPair.formData + "\", \"password\": \"" + passwordPair.formData + "\"}") }
+        onClicked: { core.on_network_BtnClicked( "/api/login/", "{ \"login\": \"" + login.text + "\", \"password\": \"" + password.text + "\"}") }
     }
     MouseArea
     {
@@ -101,7 +102,7 @@ Item {
         }
         onEntered: { registerText.color = "blue" }
         onExited: {registerText.color = "white"}
-        onClicked: { mainStack.pop() }
+        onClicked: { mainStack.push( "RegisterWindow.qml" ) }
     }
 }
 

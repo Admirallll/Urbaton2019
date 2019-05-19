@@ -1,6 +1,6 @@
-import QtQuick 2.0
 import QtQuick 2.11
 import QtQuick.Controls 2.4
+
 
 Item {
     Rectangle{
@@ -11,48 +11,62 @@ Item {
             anchors.fill: parent
 
             id: view
-            currentIndex: 0
+            currentIndex: tabBar.currentIndex
 
+            MapView{
+                id: mapa
+            }
+            CodeScanTrasher{
+                id: codeScan
+            }
             Stats{
                 id: stats
             }
             Settings{
                 id: settings
             }
-            MapView{
-                id: mapa
-            }
-
         }
 
         PageIndicator {
             id: indicator
 
-//            interactive: true
+            //            interactive: true
             count: view.count
             currentIndex: view.currentIndex
 
             anchors.bottom: view.bottom
             anchors.horizontalCenter: parent.horizontalCenter
+            onCurrentIndexChanged: {
+                switch( currentIndex )
+                {
+                case 0: core.on_network_BtnClicked("/api/recycle-point/", ""); break;
+//                case 1: core.on_network_BtnClicked("/api/codes//", ""); break;
+                case 2: core.on_network_BtnClicked("/api/user/" + core.mId + " /stat",""); break;
+                case 3: core.on_network_BtnClicked("/api/user/" + core.mId, ""); break;
+                }
+            }
+        }
+        TabBar {
 
-//            delegate: Image{//first
-//                width:15
-//                height:15
-//                source: "../images/icon.png"
-//                opacity: index === indicator.currentIndex ? 0.95 : pressed ? 0.7 : 0.45
+            opacity: 0.5
+                id: tabBar
+                currentIndex: view.currentIndex
 
-//                Behavior on opacity {
-//                    OpacityAnimator {
-//                        duration: 100
-//                    }
-//                }
-//            }
-//            property variant indicatorIcons: [
-//                "images/icon.png",
-//                "images/icon.png",
-//                "images/icon.png"
-//            ]
+                width: parent.width
+//                height: parent.height/10
 
+                TabButton {
+                    text: qsTr("mapa")
+                }
+                TabButton {
+                    text: qsTr("scan")
+                }
+                TabButton {
+                    text: qsTr("stats")
+                }
+                TabButton {
+                    text: qsTr("settings")
+                }
         }
     }
 }

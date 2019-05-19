@@ -1,4 +1,4 @@
-TARGET = places_map
+TARGET = HALF_LIFE
 TEMPLATE = app
 
 QT += quick network core positioning location

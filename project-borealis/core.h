@@ -18,24 +18,34 @@ class Core : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(int mId READ id  WRITE setMId  NOTIFY mIdChanged)
+    int id();
+    void setMId(const int &id);
+signals:
+    void mIdChanged();
+
 private:
     QList<RecyclePoint> recyclePoints;
     HttpWrapper* wrapper =  nullptr;
 
-    int mId;
+    int m_id = 1;
+    bool is_input = false;
 public:
     explicit Core(QObject *parent = nullptr);
 
 public:
     void parseFromJSON(QString json);
-    void emitNeededSignal(QString responce);
+    void emitNeededSignal(QString responce, QString reply);
 
 signals:
     void makeRequest();
 
     void sgEnterToMain();
+    void sgEnterComix();
     void sgSetPointList();
     void sgSetStaticList();
+    void sgCodeGenerated();
+    void sgCodeSended();
 
 public slots:
     void replyReceived(QString reply );

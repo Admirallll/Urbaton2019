@@ -1,5 +1,21 @@
 #include "core.h"
 
+int Core::id()
+{
+    return m_id;
+}
+
+void Core::setMId(const int &id)
+{
+    qDebug() << "checked" << id;
+    if (id == m_id)
+        return;
+
+    m_id = id;
+    emit mIdChanged();
+}
+
+
 Core::Core(QObject *parent) : QObject(parent)
 {
     wrapper = new HttpWrapper();
@@ -16,24 +32,11 @@ void Core::parseFromJSON( QString json )
     }
 }
 
-void Core::emitNeededSignal(QString responce)
+void Core::emitNeededSignal(QString responce, QString reply)
 {
     if( responce == "/api/recycle-point/" )
-        emit sgSetPointList();
-    else
-        if( responce == "/api/login/" || responce == "/api/register/" )
-            emit sgEnterToMain();
-        else
-            if( responce == "/api/stats/" )
-                emit sgSetStaticList();
-
-}
-
-void Core::replyReceived(QString reply)
-{
-    QString last_req = wrapper->getLastRequest();
-    if( !last_req.isEmpty() )
     {
+        emit sgSetPointList();
         reply = "{ \"agentsArray\": " + reply + "}";
         QJsonDocument document = QJsonDocument::fromJson(reply.toLocal8Bit());
         QJsonObject object = document.object();
@@ -42,9 +45,37 @@ void Core::replyReceived(QString reply)
         foreach (const QJsonValue & v, array)
             qDebug() << v.toObject().toVariantMap();
 
-        emitNeededSignal(last_req);
     }
-//    parseFromJSON( reply );
+    else if( responce == "/api/login/" )
+    {
+        emit sgEnterToMain();
+    }
+    else if( responce == "/api/register/" )
+    {
+        emit sgEnterComix();
+    }
+    else if( responce == "/api/stats/" )
+    {
+        emit sgSetStaticList();
+    }
+    else if( responce == "/api/codes/generate/" )
+    {
+        emit sgCodeGenerated();
+    }
+    else if( responce == "/api/codes/send_code/" )
+    {
+        emit sgCodeSended();
+    }
+}
+
+void Core::replyReceived(QString reply)
+{
+    QString last_req = wrapper->getLastRequest();
+    if( !last_req.isEmpty() )
+    {
+        emitNeededSignal(last_req, reply);
+    }
+    //    parseFromJSON( reply );
 
     // TODO: process reply from json to ... needed format
 

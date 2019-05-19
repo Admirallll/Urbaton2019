@@ -49,7 +49,7 @@ namespace RecycleApi.Controllers
 		{
 			var random = new Random();
 			var number = (int)(random.NextDouble() * 1000000);
-			return number.ToString();
+			return number.ToString().PadLeft(6, '0');
 		}
 	}
 }

@@ -104,64 +104,23 @@
     </style>
 </head>
 <body>
-<header>
-	<div class="header-element logo"><div class="container2"><img class="logo-image"src="./images/logo.png"><span class="logo-name">Recycle Hero</span></div></div>
-	<div class="header-element page-name">Page name</div>
-	<div class="header-element exit-button">Выйти</div>
-</header>
-<main>
-	<div class="sidebar menu">
-		<div class="menu-element"><a href="/info">Информация</a></div>
-		<div class="menu-element active-element"><a href="/map">Карта</a></div>
-		<div class="menu-element"><a href="/statistics">Статистика</a></div>
-		<div class="menu-element"><a href="/code">Ввести код</a></div>
-		<div class="menu-element"><a href="/rating">Рейтинг</a></div>
-		<div class="menu-element"><a href="/settings">Настройки</a></div>
-	</div>
-	<div class="main-content"></div>
-	<div class="sidebar left-sidebar"></div>
-</main>
-<script>
-    function getCookies() {
-	    var cookies = document.cookie.split(';');
-	    var result = {}
-	    for (var i = 0; i < cookies.length; i++) {
-		    var splitedCookie = cookies[i].trim().split('=');
-		    if (splitedCookie[0].length === 0)
-			    continue;
-		    result[splitedCookie[0]] = splitedCookie.slice(1).join("=");
-	    }
-	
-	    return result;
-    }
-
-    function setCookies(obj) {
-        var res1 = [];
-        for (var e in Object.entries(obj)) {
-            if (!(e in obj))
-                continue;
-            res1.push(e + "=" + obj[e]);
-        }
-        document.cookie = "userId= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-        console.info(res1.join(';'));
-    }
-
-    function onExitClick() {
-        var cookies = getCookies();
-        delete cookies.userId;
-        setCookies(cookies);
-        console.info(getCookies());
-    }
-
-
-    var cookies = getCookies();
-    if (!("userId" in cookies)) {
-        window.location.replace("/login");
-    }
-
-    var exitButton = document.getElementsByClassName("exit-button")[0];
-    exitButton.addEventListener("click", onExitClick);
-    console.log(cookies);
-</script>
+    <header>
+        <div class="header-element logo"><div class="container2"><img class="logo-image" src="./images/logo.png"><span class="logo-name">Recycle Hero</span></div></div>
+        <div class="header-element page-name">Page name</div>
+        <div class="header-element exit-button">Выйти</div>
+    </header>
+    <main>
+        <div class="sidebar menu">
+            <div class="menu-element"><a href="/info">Информация</a></div>
+            <div class="menu-element active-element"><a href="/map">Карта</a></div>
+            <div class="menu-element"><a href="/statistics">Статистика</a></div>
+            <div class="menu-element"><a href="/code">Ввести код</a></div>
+            <div class="menu-element"><a href="/rating">Рейтинг</a></div>
+            <div class="menu-element"><a href="/settings">Настройки</a></div>
+        </div>
+        <div class="main-content"></div>
+        <div class="sidebar left-sidebar"></div>
+    </main>
+    <script src="/scripts.js"></script>
 </body>
 </html>

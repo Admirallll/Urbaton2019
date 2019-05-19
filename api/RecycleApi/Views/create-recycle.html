@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Новая сдача мусора</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            max-width: 1000px;
+            margin: auto;
+            height: 100%;
+        }
+
+        html {
+            font-family: sans-serif;
+            height: 100%;
+        }
+
+        header {
+            width: 100%;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: row;
+            padding: 15px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: row;
+            height: 90%;
+        }
+
+        .logo {
+            text-align: left;
+        }
+
+        .page-name {
+            text-align: center;
+            font-size: 30px;
+            padding-top: 5px;
+        }
+
+        .exit-button {
+            text-align: right;
+            font-size: 20px;
+            padding-top: 5px;
+        }
+
+        .header-element {
+            flex: 1 1 0px;
+        }
+
+        .sidebar {
+            width: 20%;
+        }
+
+        .main-content {
+            width: 60%;
+            border-left: 1px solid lightblue;
+            border-right: 1px solid lightblue;
+        }
+
+        .menu {
+        }
+
+        .menu-element {
+            font-size: 20px;
+            padding: 3px;
+            padding-left: 12px;
+            text-align: left;
+        }
+
+        .active-element {
+            background-color: lightblue;
+        }
+
+        .menu-element:hover {
+            background-color: lightblue;
+        }
+
+        a {
+            color: black;
+        }
+
+        .logo-image {
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .logo-name {
+            padding-left: 10px;
+            font-size: 20px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .container2 {
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        main {
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-element logo"><div class="container2"><img class="logo-image" src="/images/logo.png"><span class="logo-name">Recycle Hero</span></div></div>
+        <div class="header-element page-name">Новая сдача мусора</div>
+        <div class="header-element exit-button">Выйти</div>
+    </header>
+    <main>
+        <div class="sidebar menu">
+            <!--<div class="menu-element"><a href="/info">Информация</a></div>
+            <div class="menu-element active-element"><a href="/map">Карта</a></div>
+            <div class="menu-element"><a href="/statistics">Статистика</a></div>
+            <div class="menu-element"><a href="/code">Ввести код</a></div>
+            <div class="menu-element"><a href="/rating">Рейтинг</a></div>
+            <div class="menu-element"><a href="/settings">Настройки</a></div>-->
+        </div>
+        <div class="main-content">
+            <h1 id="point-name"></h1>
+            <div id="1" align="center"></div>
+            <div align="center"><button type="button" id="submit-button">Добавить новую сдачу мусора</button></div>
+        </div>
+        <div class="sidebar left-sidebar"></div>
+    </main>
+    <script src="/scripts.js"></script>
+    <script>
+        function onSubmitClick() {
+            var materials = {};
+            var pairs = Object.entries(dictionary);
+
+            for (i = 0; i < pairs.length; i++) {
+                var garbageNameEng = pairs[i][0];
+                materials[garbageNameEng] = document.getElementById(garbageNameEng).value;
+            }
+            var newRecycle = { "RecyclePointId": user.ownerPointId, "Materials": JSON.stringify(materials) };
+            var json = JSON.stringify(newRecycle);
+            var response = ExecuteMethod("http://10.34.32.94:51589/api/codes/generate", "post", json);
+
+
+            window.location.replace("show-code?code=" + response.responseText);
+        }
+        //if (!user.IsKeeper) {
+        //  window.location.replace("/");
+        //}
+
+
+
+        var submitButton = document.getElementById("submit-button");
+        submitButton.addEventListener("click", onSubmitClick);
+
+
+        var table = document.createElement('TABLE');
+        var div = document.getElementById('1');
+        div.append(table);
+
+        table.border = '0';
+
+        function httpGet(theUrl) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", theUrl, false);
+            xmlHttp.send(null);
+            return JSON.parse(xmlHttp.responseText);
+        }
+
+        var dictionary = {
+            Plastic: "Пластик", Paper: "Бумага", Battery: "Батарейки",
+            Clothes: "Одежда", Accumulator: "Аккумулятор", Glass: "Стекло", Metal: "Металл",
+            Thermometer: "Ртутные градусники", Wheels: "Шины", Lamps: "Лампы", Other: "Другое"
+        };
+
+        var pairs = Object.entries(dictionary);
+
+        for (i = 0; i < pairs.length; i++) {
+            var garbageNameEng = pairs[i][0];
+            var garbageNameRu = pairs[i][1];
+
+            var tr = document.createElement('TR');
+
+            //adding image cell
+            var tdForImage = document.createElement('TD');
+            tdForImage.align = "left";
+            tdForImage.style.padding = "5px";
+            tdForImage.style.width = "30px"
+            var img = document.createElement("img");
+            img.src = "/images/" + garbageNameEng + ".png";
+            img.height = "24";
+
+            tdForImage.appendChild(img);
+            tr.appendChild(tdForImage);
+
+            //adding name cell
+            var tdForName = document.createElement('TD');
+            tdForName.align = "left";
+            tdForName.width = "120px";
+            tdForName.appendChild(document.createTextNode(garbageNameRu));
+            tr.appendChild(tdForName);
+
+            //adding value cell
+            var tdForValue = document.createElement('TD');
+            tdForValue.align = "left";
+            var inputElement = document.createElement('input');
+            inputElement.id = garbageNameEng;
+            tdForValue.appendChild(inputElement);
+            tr.appendChild(tdForValue);
+
+            table.appendChild(tr);
+        }
+    </script>
+</body>
+</html>

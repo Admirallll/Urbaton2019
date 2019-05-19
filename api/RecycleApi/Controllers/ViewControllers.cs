@@ -9,18 +9,20 @@ namespace RecycleApi.Controllers
 {
 	public class ViewControllers : ControllerBase
 	{
+		private static string pathPrefix = "Views\\";
+
 		[Route("login")]
 		[HttpGet]
 		public ActionResult Login()
 		{
-			return File(new FileStream("login.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "login.html", FileMode.Open), "text/html");
 		}
 
 		[Route("register")]
 		[HttpGet]
 		public ActionResult Register()
 		{
-			return File(new FileStream("register.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "register.html", FileMode.Open), "text/html");
 		}
 
 
@@ -35,22 +37,23 @@ namespace RecycleApi.Controllers
 		[HttpGet]
 		public ActionResult Statistics()
 		{
-			return File(new FileStream("statistics.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "statistics.html", FileMode.Open), "text/html");
 		}
 
 		[Route("info")]
 		[HttpGet]
 		public ActionResult Info()
 		{
-			return File(new FileStream("info.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "info.html", FileMode.Open), "text/html");
 		}
 
 		[Route("map")]
 		[HttpGet]
 		public ActionResult Map()
 		{
-			return File(new FileStream("map.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "map.html", FileMode.Open), "text/html");
 		}
+		
 
 		[Route("/images/{imageName}")]
 		[HttpGet]
@@ -63,25 +66,37 @@ namespace RecycleApi.Controllers
 		[Route("owner/statistics")]
 		public ActionResult OwnerStat()
 		{
-			return File(new FileStream("owner-statistics.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "owner-statistics.html", FileMode.Open), "text/html");
 		}
 		[HttpGet]
 		[Route("owner/create-recycle")]
 		public ActionResult CreateRecycle()
 		{
-			return File(new FileStream("create-recycle.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "create-recycle.html", FileMode.Open), "text/html");
 		}
 		[HttpGet]
 		[Route("owner/show-code")]
 		public ActionResult ShowCode()
 		{
-			return File(new FileStream("show-code.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "show-code.html", FileMode.Open), "text/html");
 		}
 		[HttpGet]
 		[Route("code")]
 		public ActionResult EnterCode()
 		{
-			return File(new FileStream("enter-code.html", FileMode.Open), "text/html");
+			return File(new FileStream(pathPrefix + "enter-code.html", FileMode.Open), "text/html");
+		}
+		[HttpGet]
+		[Route("rating")]
+		public ActionResult Rating()
+		{
+			return File(new FileStream(pathPrefix + "rating.html", FileMode.Open), "text/html");
+		}
+		[HttpGet]
+		[Route("scripts.js")]
+		public ActionResult Scripts()
+		{
+			return File(new FileStream("scripts.js", FileMode.Open), "text/javascript");
 		}
 	}
 }

@@ -99,6 +99,10 @@
             display: inline-block;
         }
 
+        #point-name {
+            padding-left: 20px;
+        }
+
         main {
         }
     </style>
@@ -145,7 +149,7 @@
             return JSON.parse(xmlHttp.responseText);
         }
 
-        var response = httpGet("http://10.34.32.94:51589/api/user/" + user.ownerPointId + "/stat");
+        var response = httpGet("http://10.34.32.94:51589/api/recycle-point/" + user.ownerPointId + "/stat");
         var materialsCount = response.materialsCount;
 
         var titleBlock = document.getElementById("point-name");

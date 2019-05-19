@@ -40,7 +40,7 @@ namespace RecycleApi.Controllers
 		[HttpGet]
 		public ActionResult AddPoints()
 		{
-			return File(new FileStream("submit-points.html", FileMode.Open), "text/html");
+			return File(new FileStream("Views\\submit-points.html", FileMode.Open), "text/html");
 		}
 
 		[Route("{id}/stat")]

@@ -18,12 +18,7 @@ Item {
         anchors.fill: parent
         clip: true
     }
-    /*FastBlur {
 
-        anchors.fill: background
-        source: background
-        radius: 32
-    }*/
     Text{
         id: titleText
         text: "Авторизация"
@@ -47,10 +42,10 @@ Item {
         y:parent.height/2-height/2
         id: login
         placeholderText: "Логин"
-//        Rectangle {
-//            color: control.enabled ? "transparent" : "#353637"
-//            border.color: control.enabled ? "#21be2b" : "transparent"
-//        }
+        //        Rectangle {
+        //            color: control.enabled ? "transparent" : "#353637"
+        //            border.color: control.enabled ? "#21be2b" : "transparent"
+        //        }
     }
 
     Text{
@@ -68,23 +63,37 @@ Item {
         y:parent.height/1.83
         id: password
         placeholderText: "Пароль"
-//        Rectangle {
-//            color: control.enabled ? "transparent" : "#353637"
-//            border.color: control.enabled ? "#21be2b" : "transparent"
-//        }
+        //        Rectangle {
+        //            color: control.enabled ? "transparent" : "#353637"
+        //            border.color: control.enabled ? "#21be2b" : "transparent"
+        //        }
     }
 
-    Button{
+    Rectangle{
         id: btn
         width: parent.width/2
         height: parent.height*0.05
         x:parent.width/2-width/2
         y:parent.height/1.65
         //font.family: robotoLight.name
-        text: "Войти"
-
-        onClicked: { core.on_network_BtnClicked( "/api/login/", "{ \"login\": \"" + login.text + "\", \"password\": \"" + password.text + "\"}") }
+        Text{
+            x:parent.width/2-width/2
+            y:parent.height/2-height/2
+            text: "Войти"
+        }
+        MouseArea{
+            anchors.fill:parent
+            onClicked: { core.on_network_BtnClicked( "/api/login/", "{ \"login\": \"" + login.text + "\", \"password\": \"" + password.text + "\"}") }
+            onPressed: parent.scale = 0.9
+            onReleased: parent.scale = 1
+        }
+        Behavior on scale {
+            PropertyAnimation{
+                duration: 100
+            }
+        }
     }
+
     MouseArea
     {
         width: parent.width/2

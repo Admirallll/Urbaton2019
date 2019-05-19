@@ -11,7 +11,7 @@ Item {
         x:0
         y:0
         id: background
-        source: "qrc:/images/grass.jpg"
+        source: "qrc:/images/wave.jpg"
         smooth: true
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent

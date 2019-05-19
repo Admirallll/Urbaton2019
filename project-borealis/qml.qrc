@@ -12,6 +12,13 @@
         <file>images/grass.jpg</file>
         <file>images/whales.jpg</file>
         <file>images/whaleshd.jpg</file>
+        <file>images/comix/1.png</file>
+        <file>images/comix/2.png</file>
+        <file>images/comix/3.png</file>
+        <file>images/comix/4.png</file>
+        <file>images/comix/5.png</file>
+        <file>images/comix/6.png</file>
+        <file>images/comix/all.png</file>
     </qresource>
     <qresource prefix="/controls">
         <file>InputPair.qml</file>
@@ -23,5 +30,6 @@
         <file>News.qml</file>
         <file>Settings.qml</file>
         <file>Stats.qml</file>
+        <file>Comix.qml</file>
     </qresource>
 </RCC>

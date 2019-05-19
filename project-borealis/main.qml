@@ -20,7 +20,7 @@ ApplicationWindow {
             id: autWindow
             anchors.fill: parent
         }*/
-        RegisterWindow{
+        Comix{
             anchors.fill:parent
         }
     }

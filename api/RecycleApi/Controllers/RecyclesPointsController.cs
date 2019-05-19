@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Cors;
@@ -33,7 +34,6 @@ namespace RecycleApi.Controllers
 
 
 			return db.RecyclePoints.Count();
-			//return Redirect(Request.UrlReferrer.ToString());
 		}
 
 		[Route("edit")]
@@ -41,6 +41,29 @@ namespace RecycleApi.Controllers
 		public ActionResult AddPoints()
 		{
 			return File(new FileStream("submit-points.html", FileMode.Open), "text/html");
+		}
+
+		[Route("{id}/stat")]
+		public ActionResult<UserStatistics> Statistics(int id)
+		{
+			var pointRecycles = db.RecycleDtos2.Where(recycle => recycle.RecyclePointId == id).ToArray();
+			var result = new UserStatistics();
+			result.MaterialsCount = new Dictionary<MaterialType, int>();
+			result.TotalCount = pointRecycles.Count();
+			result.Name = db.RecyclePoints.First(rp => rp.Id == id).Name;
+			foreach (var en in Enum.GetValues(typeof(MaterialType)))
+			{
+				var el = (MaterialType)en;
+				result.MaterialsCount[el] = 0;
+			}
+			foreach (var recycle in pointRecycles.Select(r => r.ToRecycle()))
+			{
+				foreach (var material in recycle.Materials.Keys)
+				{
+					result.MaterialsCount[material] = recycle.Materials[material];
+				}
+			}
+			return result;
 		}
 	}
 }

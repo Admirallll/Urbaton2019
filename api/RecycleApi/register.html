@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <meta charset="UTF-8">
+    <style>
+        .fieldsPanel {
+            background-color: lightblue;
+            width: 200px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .textField {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            width: 80%;
+            line-height: 20px;
+            border-radius: 1px;
+            padding: 5px;
+        }
+
+        .reg-link {
+            font-size: 12px;
+        }
+
+        a {
+            color: black;
+        }
+
+        .center-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .fieldsPanel2 {
+            text-align: center;
+        }
+
+        .button-mid {
+            width: 80%;
+            background-color: lightblue;
+            border-radius: 3px;
+        }
+
+        .auth-title {
+            font-size: 20px;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .remind-password-text {
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fieldsPanel">
+        <div class="fieldsPanel2">
+            <span class="auth-title">Регистрация</span>
+            <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br />
+            <input class="textField" type="password" id="password" placeholder="Пароль"><br />
+            <button class="button-mid" type="button" id="submit">Зарегистрироваться</button> 
+            <div class="center-container">
+                <a class="reg-link" href="/login">Уже зарегистрированы? Войти</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    function ExecuteMethod(url, method, body) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open(method, url, false); // false for synchronous request
+        xmlHttp.setRequestHeader("Content-Type", "application/json");
+        xmlHttp.send(body);
+        return xmlHttp;
+    }
+
+    function getParams() {
+        var str = window.location.search.substr(1);
+        var splited = str.split('&');
+        var result = {};
+        for (var i = 0; i < splited.length; i++) {
+            var kv = splited[i].trim().split('=');
+            if (kv[0].length === 0)
+                continue;
+            result[kv[0]] = kv[1];
+        }
+
+        return result;
+    }
+
+    function onButtonClick() {
+        var params = getParams();
+        var isKeeper = false;
+        var pointId = 0;
+        if ("pointId" in params) {
+            isKeeper = true;
+            pointId = params["pointId"];
+        }
+        var object = { "Login": document.getElementById("login").value, "Password": document.getElementById("password").value, "IsKeeper": isKeeper, "OwnerPointId": pointId };
+        var json = JSON.stringify(object);
+
+        var r = ExecuteMethod('http://10.34.32.94:51589/api/register', 'post', json);
+        console.log(r.responseText);
+        window.location.replace("/");
+    }
+
+    var button = document.getElementById("submit");
+    button.addEventListener("click", onButtonClick);
+
+</script>
+</html>

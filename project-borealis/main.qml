@@ -16,7 +16,6 @@ ApplicationWindow {
         target: core
         onSgEnterToMain: { mainStack.push( "panels/Swiper.qml" ) }
     }
-
     StackView {
         id: mainStack
         //initialItem: "AuthorizationWindow.qml"

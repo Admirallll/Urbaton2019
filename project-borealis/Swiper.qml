@@ -16,8 +16,8 @@ Item {
             MapView{
                 id: mapa
             }
-            CodeScanTrasher{
-                id: codeScan
+            CodeScan{
+                id:codeScan
             }
             Stats{
                 id: stats
@@ -26,6 +26,8 @@ Item {
                 id: settings
             }
         }
+
+
 
         PageIndicator {
             id: indicator

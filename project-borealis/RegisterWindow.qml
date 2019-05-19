@@ -6,6 +6,10 @@ import QtQuick.Window 2.2
 import QtGraphicalEffects 1.0
 
 Item {
+    Connections{
+        target: core
+        onSgEnterComix: { mainStack.push( "panels/Comix.qml" ) }
+    }
     Image {
         //anchors.fill: parent
         x:0
@@ -48,10 +52,10 @@ Item {
         y:parent.height/2-height/2
         id: login
         placeholderText: "Логин"
-        Rectangle {
-            color: control.enabled ? "transparent" : "#353637"
-            border.color: control.enabled ? "#21be2b" : "transparent"
-        }
+//        Rectangle {
+//            color: control.enabled ? "transparent" : "#353637"
+//            border.color: control.enabled ? "#21be2b" : "transparent"
+//        }
     }
 
     Text{

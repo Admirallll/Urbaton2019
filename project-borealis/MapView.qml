@@ -13,10 +13,11 @@ Item
         Image {
             id: legend
             x: 10
-            width: parent.width/5
+            width: parent.width/4.5
             y:parent.height/3
-            height: parent.height/3
+            height: parent.height/3.8
             source: "../images/legenda.png"
+            smooth: true
         }
     }
 }

@@ -58,7 +58,7 @@ Item {
 //                height: parent.height/10
 
                 TabButton {
-                    text: qsTr("mapa")
+                    text: qsTr("map")
                 }
                 TabButton {
                     text: qsTr("scan")

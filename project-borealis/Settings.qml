@@ -10,7 +10,7 @@ Item{
         x:0
         y:0
         id: background
-        source: "qrc:/images/grass.jpg"
+        source: "qrc:/images/wave.jpg"
         smooth: true
         fillMode: Image.PreserveAspectCrop
         anchors.fill: parent
@@ -90,7 +90,7 @@ Item{
 
     Text{
         x:parent.width*0.076
-        y:parent.height*0.259
+        y:parent.height*0.261
         text: "ФИО"
         font.family: robotoLight.name
         font.pointSize: 15

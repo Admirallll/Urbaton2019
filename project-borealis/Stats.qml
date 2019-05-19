@@ -11,7 +11,7 @@ Item{
     Image {
         //anchors.fill: parent
         id: background
-        source: "qrc:/images/grass.jpg"
+        source: "qrc:/images/wave.jpg"
         smooth: true
 
         fillMode: Image.PreserveAspectCrop
@@ -53,7 +53,8 @@ Item{
         ListView {
             width: parent.width/2
             height: parent.height
-            anchors.left: parent.left
+            x:parent.width*0.04
+            y:parent.height*0.04
 
             model: myModel
             delegate: Rectangle {
@@ -74,7 +75,8 @@ Item{
         ListView {
             width: parent.width/2
             height: parent.height
-            anchors.left: parent.horizontalCenter
+            x:parent.width/2-parent.width*0.04
+            y:parent.height*0.04
 
             model: modelMy
             delegate: Rectangle {

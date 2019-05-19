@@ -50,6 +50,7 @@
         .auth-title {
             font-size: 20px;
         }
+
         .container {
             padding-top: 100px;
             text-align: center;
@@ -73,44 +74,24 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <img class="turtle-image" src="/images/hello.png"/>
-<div class="fieldsPanel">
-    <div class="fieldsPanel2">
-        <span class="auth-title">Регистрация</span>
-        <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br />
-        <input class="textField" type="password" id="password" placeholder="Пароль"><br />
-        <button class="button-mid" type="button" id="submit">Зарегистрироваться</button> 
-        <div class="center-container">
-            <a class="reg-link" href="/login">Уже зарегистрированы? Войти</a>
+    <div class="container">
+        <img class="turtle-image" src="/images/hello.png" />
+        <div class="fieldsPanel">
+            <div class="fieldsPanel2">
+                <span class="auth-title">Регистрация</span>
+                <input class="textField" type="text" id="login" placeholder="Имя пользователя"><br />
+                <input class="textField" type="password" id="password" placeholder="Пароль"><br />
+                <button class="button-mid" type="button" id="submit">Зарегистрироваться</button>
+                <div class="center-container">
+                    <a class="reg-link" href="/login">Уже зарегистрированы? Войти</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-    </div>
 </body>
+<script src="/scripts.js"></script>
 <script>
 
-    function ExecuteMethod(url, method, body) {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open(method, url, false); // false for synchronous request
-        xmlHttp.setRequestHeader("Content-Type", "application/json");
-        xmlHttp.send(body);
-        return xmlHttp;
-    }
-
-    function getParams() {
-        var str = window.location.search.substr(1);
-        var splited = str.split('&');
-        var result = {};
-        for (var i = 0; i < splited.length; i++) {
-            var kv = splited[i].trim().split('=');
-            if (kv[0].length === 0)
-                continue;
-            result[kv[0]] = kv[1];
-        }
-
-        return result;
-    }
 
     function onButtonClick() {
         var params = getParams();

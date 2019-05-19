@@ -21,6 +21,7 @@
         <file>images/comix/5.png</file>
         <file>images/comix/6.png</file>
         <file>images/comix/all.png</file>
+        <file>images/wave.jpg</file>
     </qresource>
     <qresource prefix="/controls">
         <file>InputPair.qml</file>

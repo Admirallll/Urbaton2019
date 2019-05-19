@@ -19,43 +19,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="enter-code.html">
+    <None Update="Views\enter-code.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="show-code.html">
+    <None Update="scripts.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Views\show-code.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="index.html">
+    <None Update="Views\info.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="info.html">
+    <None Update="Views\create-recycle.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="create-recycle.html">
+    <None Update="Views\owner-statistics.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="owner-statistics.html">
+    <None Update="Views\map.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="map.html">
+    <None Update="Views\rating.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="statistics.html">
+    <None Update="Views\statistics.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="layout.html">
+    <None Update="Views\layout.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="register.html">
+    <None Update="Views\register.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="login.html">
+    <None Update="Views\login.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="submit-points.html">
+    <None Update="Views\submit-points.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

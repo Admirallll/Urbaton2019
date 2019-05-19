@@ -8,6 +8,15 @@ namespace RecycleApi
 	public enum MaterialType
 	{
 		Paper,
-		Plastic
+		Plastic,
+		Battery,
+		Clothes,
+		Accumulator,
+		Glass,
+		Metal,
+		Thermometer,
+		Wheels,
+		Lamps,
+		Other
 	}
 }

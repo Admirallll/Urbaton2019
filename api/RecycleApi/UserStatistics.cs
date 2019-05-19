@@ -9,5 +9,6 @@ namespace RecycleApi
 	{
 		public Dictionary<MaterialType, int> MaterialsCount { get; set; }
 		public int TotalCount { get; set; }
+		public string Name { get; set; }
 	}
 }

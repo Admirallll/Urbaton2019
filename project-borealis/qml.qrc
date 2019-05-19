@@ -5,13 +5,13 @@
         <file>AuthorizationWindow.qml</file>
         <file>RegisterWindow.qml</file>
         <file>images/icon.png</file>
-        <file>images/1.png</file>
-        <file>images/2.png</file>
         <file>fonts/Engravers Gothic BT.ttf</file>
         <file>fonts/helvetica.otf</file>
         <file>fonts/Roboto-Light.ttf</file>
         <file>fonts/Roboto-Regular.ttf</file>
         <file>images/grass.jpg</file>
+        <file>images/whales.jpg</file>
+        <file>images/whaleshd.jpg</file>
     </qresource>
     <qresource prefix="/controls">
         <file>InputPair.qml</file>

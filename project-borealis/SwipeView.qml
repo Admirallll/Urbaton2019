@@ -7,23 +7,14 @@ Item {
     SwipeView {
         id: view
 
-        currentIndex: 1
+        currentIndex: 0
         anchors.fill: parent
 
-        Item {
-            id: firstPage
+        Settings{
+            id:set
         }
-        Item {
-            id: secondPage
-        }
-        Item {
-            id: thirdPage
-        }
-        Item{
-            id:fourthPage
-        }
-        Item{
-
+        Stats{
+            id:stats
         }
     }
 

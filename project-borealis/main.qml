@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "qrc:/panels"
 
 ApplicationWindow {
     id: window
@@ -12,12 +13,15 @@ ApplicationWindow {
 
     StackView {
         id: mainStack
-        initialItem: "AuthorizationWindow.qml"
+        //initialItem: "AuthorizationWindow.qml"
         anchors.fill: parent
 
-        AuthorizationWindow{
+        /*AuthorizationWindow{
             id: autWindow
             anchors.fill: parent
+        }*/
+        RegisterWindow{
+            anchors.fill:parent
         }
     }
     FontLoader
@@ -36,14 +40,8 @@ ApplicationWindow {
         source: "qrc:/fonts/Engravers Gothic BT.ttf"
     }
 
-    /*header: ToolBar {
-        contentHeight: toolButton.implicitHeight*/
-
     /*SwipeView{
         anchors.fill: parent
     }*/
 
-    /*Settings{
-        anchors.fill: parent
-    }*/
 }

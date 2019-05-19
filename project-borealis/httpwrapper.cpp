@@ -36,10 +36,16 @@ void HttpWrapper::requestOnServer( QString uri, QString data )
 
 void HttpWrapper::replyFinished( QNetworkReply *reply)
 {
-    QString read = QString::fromLocal8Bit( reply->readAll() );
-    emit SgReplyFinished( read );
-
     QString reason = reply->attribute( QNetworkRequest::HttpStatusCodeAttribute ).toString();
     qDebug() << reason;
-    qDebug() << "reply gotten:"+ read;
+
+    if( reason == "200")
+    {
+        QString read = QString::fromLocal8Bit( reply->readAll() );
+        qDebug() << "reply gotten:"+ read;
+        emit SgReplyFinished( read );
+
+    }
+
+
 }
